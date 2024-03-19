@@ -1,0 +1,33 @@
+nacos:
+  server: 192.168.56.211:8848
+  namespace: 5f436851-a34e-460e-8d1e-632afa77450b
+  group: DEFAULT_GROUP
+  username: nacos
+  password: nacos
+# Spring
+spring: 
+  cloud:
+    nacos:
+      discovery:
+        # 服务注册地址
+        server-addr: ${nacos.server}
+        namespace: ${nacos.namespace}
+        group: ${nacos.group}
+        username: ${nacos.username}
+        password: ${nacos.password}
+      config:
+        # 配置中心地址
+        server-addr: ${nacos.server}
+        # 配置文件格式
+        file-extension: yml
+        # 共享配置
+#        shared-configs:
+#          - application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+        shared-configs[0]:
+          data-id: application.${spring.cloud.nacos.config.file-extension}
+          group: ${nacos.group}
+          refresh: true
+        namespace: ${nacos.namespace}
+        group: ${nacos.group}
+        username: ${nacos.username}
+        password: ${nacos.password}

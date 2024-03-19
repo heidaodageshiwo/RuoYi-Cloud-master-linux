@@ -1,0 +1,13 @@
+# 基础镜像
+FROM mysql:8.0
+# author
+MAINTAINER ruoyi
+EXPOSE 3306
+# 执行sql脚本
+# ADD ./db/*.sql /docker-entrypoint-initdb.d/
+# COPY ./db/quartz.sql /docker-entrypoint-initdb.d/
+# COPY ./db/ry_20231130.sql /docker-entrypoint-initdb.d/
+# COPY ./db/ry_config_20231204.sql /docker-entrypoint-initdb.d/
+# [root@localhost mysql]# quartz.sql ry_20231130.sql ry_config_20231204.sql
+
+
